@@ -24,7 +24,7 @@ in
     # ublock origin
     id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
     sha256 =
-      "sha256:12ps948lg91bbjxjmwb3d8590q8rf4mv7bkhzrjnnd210gbl5wxn";
+      "sha256:0izlm20b0bpjr98rw63c42zb04ky1mclg0da2xmj0kw3qichnpvg";
     version = "1.38.6";
   });
 }

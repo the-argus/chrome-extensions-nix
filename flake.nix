@@ -3,11 +3,18 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      flake = true;
+    };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-    let
-      pkgs = import nixpkgs { inherit system; };
-    in
-    { } // (import ./packages.nix { inherit pkgs; });
+  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      { } // (import ./packages.nix { inherit pkgs; })
+    );
 }

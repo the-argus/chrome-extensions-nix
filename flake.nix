@@ -15,7 +15,7 @@
       let
         pkgs = import nixpkgs { inherit system; };
       in
-      if system == system.aarch64-darwin then {} else
+      if (system == flake-utils.lib.system.aarch64-darwin) then {} else
         (import ./packages.nix { inherit pkgs; })
     );
 }

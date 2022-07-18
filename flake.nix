@@ -15,6 +15,7 @@
       let
         pkgs = import nixpkgs { inherit system; };
       in
-      { } // (import ./packages.nix { inherit pkgs; })
+      if system == system.aarch64-darwin then {} else
+        (import ./packages.nix { inherit pkgs; })
     );
 }

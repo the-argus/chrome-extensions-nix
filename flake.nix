@@ -4,18 +4,17 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      flake = true;
-    };
+    # flake-utils = {
+    #   url = "github:numtide/flake-utils";
+    #   flake = true;
+    # };
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-      in
-      if (system == flake-utils.lib.system.aarch64-darwin) then {} else
-        (import ./packages.nix { inherit pkgs; })
-    );
+    # flake-utils.lib.eachDefaultSystem (system:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+    in
+    (import ./packages.nix { inherit pkgs; });
 }
